@@ -1,3 +1,4 @@
+import 'package:beyond_time/pages/menu.dart';
 import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +10,8 @@ class ScheduleDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(card.activity.mainTitle,
-              style: const TextStyle(color: Colors.black87)),
+          title: Text(card.activity.mainTitle),
           elevation: 0,
-          backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(
-            color: Colors.black87,
-          ),
         ),
         body: Column(
           children: <Widget>[

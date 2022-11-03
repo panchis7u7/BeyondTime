@@ -25,6 +25,7 @@ class ActivityCard extends StatelessWidget {
                 Hero(
                   tag: "Schedule${activity.id}",
                   child: Material(
+                    color: Colors.transparent,
                     child: InkWell(
                       onTap: () => onTap(context, this),
                       child: Container(
@@ -39,12 +40,12 @@ class ActivityCard extends StatelessWidget {
                                 end: Alignment.bottomRight,
                                 stops: const [0, 6],
                                 colors: [activity.topColor, activity.bottomColor!]) : null,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey,
+                                  color: Theme.of(context).shadowColor,
                                   blurRadius: 15,
                                   spreadRadius: 5,
-                                  offset: Offset(0, 5)),
+                                  offset: const Offset(0, 5)),
                             ]),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,

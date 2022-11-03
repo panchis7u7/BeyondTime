@@ -1,5 +1,7 @@
 import 'package:beyond_time/Pages/Time_Scheduler.dart';
 import 'package:beyond_time/models/menu_option.dart';
+import 'package:beyond_time/pages/about.dart';
+import 'package:beyond_time/pages/settings.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -10,7 +12,17 @@ class Routes {
         route: "Home",
         icon: Icons.home,
         name: "Home",
-        screen: TimeScheduler())
+        screen: const TimeScheduler()),
+    MenuOption(
+        route: "Settings",
+        icon: Icons.settings,
+        name: "Settings",
+        screen: const Settings()),
+    MenuOption(
+        route: "About",
+        icon: Icons.info,
+        name: "About",
+        screen: const About())  
   ];
 
   static onGenerateRoute(RouteSettings settings, Widget defaultWidget) =>

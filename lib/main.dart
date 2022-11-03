@@ -1,5 +1,6 @@
 import 'package:beyond_time/Pages/Time_Scheduler.dart';
 import 'package:beyond_time/router/routes.dart';
+import 'package:beyond_time/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const BeyondTime());
@@ -12,6 +13,7 @@ class BeyondTime extends StatelessWidget {
     title: "Beyond Time",
     initialRoute: "Home",
     routes: Routes.getAppRoutes(),
-    onGenerateRoute: (settings) => Routes.onGenerateRoute(settings, TimeScheduler()),
+    theme: BeyondTheme.darkTheme,
+    onGenerateRoute: (settings) => Routes.onGenerateRoute(settings, const TimeScheduler()),
   );
 }

@@ -1,6 +1,9 @@
 import 'package:beyond_time/Database/db.dart';
 import 'package:beyond_time/models/schedule_activity.dart';
+import 'package:beyond_time/pages/menu.dart';
 import 'package:beyond_time/pages/schedule_detail.dart';
+import 'package:beyond_time/router/routes.dart';
+import 'package:beyond_time/themes/theme.dart';
 import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +33,7 @@ class TimeSchedulerState extends State<TimeScheduler> {
   @override
   void initState() {
     //DB.deleteDatabase("schedules_activities.db");
-    /*DB.insertActivity(ScheduleActivity(
+    DB.insertActivity(ScheduleActivity(
         topTitle: "Lectura",
         mainTitle: "El Principito",
         topColor: Colors.purple,
@@ -47,7 +50,7 @@ class TimeSchedulerState extends State<TimeScheduler> {
         useGradient: true,
         useFoil: false,
         begin: DateTime(2017, 9, 7, 17, 30),
-        end: DateTime(2018, 9, 7, 17, 30)));*/
+        end: DateTime(2018, 9, 7, 17, 30)));
     scheduledActivities = List.empty();
     loadSchedule();
     super.initState();
@@ -62,20 +65,11 @@ class TimeSchedulerState extends State<TimeScheduler> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        drawer: const Drawer(child: Menu()),
         appBar: AppBar(
-          title: const Text("Schedule",
-              style: TextStyle(color: Colors.black87, fontSize: 18)),
-          iconTheme: const IconThemeData(
-            color: Colors.black87,
-          ),
+          title: const Text("Schedule"),
           elevation: 0,
-          backgroundColor: Colors.white,
           centerTitle: true,
-          titleTextStyle: const TextStyle(color: Colors.white),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Navigator.of(context).maybePop(),
-          ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.search))
           ],
