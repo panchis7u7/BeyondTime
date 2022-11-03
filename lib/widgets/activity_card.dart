@@ -1,12 +1,13 @@
+import 'package:beyond_time/models/schedule_activity.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 //import 'package:sensors_plus/sensors_plus.dart';
 
 class ActivityCard extends StatelessWidget {
-  const ActivityCard({Key? key, required this.id, required this.title, required this.onTap})
+  const ActivityCard({Key? key, required this.activity, required this.onTap})
       : super(key: key);
 
-  final String id;
-  final String title;
+  final ScheduleActivity activity;
   final Function onTap;
 
   @override
@@ -22,7 +23,7 @@ class ActivityCard extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Hero(
-                  tag: id,
+                  tag: "Schedule${activity.id}",
                   child: Material(
                     child: InkWell(
                       onTap: () => onTap(context, this),
@@ -31,11 +32,13 @@ class ActivityCard extends StatelessWidget {
                         height: 200,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            gradient: const LinearGradient(
+                            color: activity.useGradient ? null : activity.topColor,
+                            gradient: activity.useGradient && activity.bottomColor != null ? 
+                            LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                stops: [0, 6],
-                                colors: [Colors.purple, Colors.orangeAccent]),
+                                stops: const [0, 6],
+                                colors: [activity.topColor, activity.bottomColor!]) : null,
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.grey,
@@ -48,9 +51,9 @@ class ActivityCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.all(15),
+                              padding: const EdgeInsets.all(20),
                               child: Text(
-                                title,
+                                activity.topTitle,
                                 style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -58,57 +61,47 @@ class ActivityCard extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Column(
                               children: <Widget>[
-                                const Align(
+                                Align(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "CATs Training",
-                                    style: TextStyle(
+                                    activity.mainTitle,
+                                    style: const TextStyle(
                                         letterSpacing: 2,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
                                 ),
-                                const Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 57, top: 0.5),
-                                    child: Text("1234",
-                                        style: TextStyle(
-                                            fontSize: 10, color: Colors.white)),
-                                  ),
-                                ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 25,
                                 ),
                                 Align(
                                   alignment: Alignment.center,
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: const <Widget>[
-                                      SizedBox(width: 2),
+                                    children: <Widget>[
+                                      const SizedBox(width: 2),
                                       Text(
-                                        "02/21",
-                                        style: TextStyle(
+                                        DateFormat('dd-MM-yyyy')
+                                            .format(activity.begin),
+                                        style: const TextStyle(
                                             fontSize: 20, color: Colors.white),
                                       ),
-                                      SizedBox(width: 30),
-                                      Text.rich(TextSpan(children: [
+                                      const SizedBox(width: 10),
+                                      Text.rich(TextSpan(children: <InlineSpan>[
                                         TextSpan(
-                                            text: "Expires Date ",
-                                            style: TextStyle(
-                                                fontSize: 10, color: Colors.white)),
-                                        TextSpan(
-                                            text: "07/24",
-                                            style: TextStyle(
-                                                fontSize: 20, color: Colors.white))
+                                            text: DateFormat('dd-MM-yyyy')
+                                                .format(activity.end),
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white))
                                       ])),
-                                      SizedBox(width: 2)
+                                      const SizedBox(width: 2)
                                     ],
                                   ),
                                 )
