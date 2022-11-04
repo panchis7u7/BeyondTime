@@ -3,6 +3,8 @@ import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
+// Scheduled activity details and configuration.
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class ScheduleDetail extends StatefulWidget {
   const ScheduleDetail({super.key, required this.card});
 
@@ -12,17 +14,31 @@ class ScheduleDetail extends StatefulWidget {
   State<StatefulWidget> createState() => ScheduleDetailState();
 }
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// Scheduled activity detail state.
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class ScheduleDetailState extends State<ScheduleDetail> {
   late Color pickerColor;
 
+  // Run at widget build.
+  //######################################################################
   @override
   void initState() {
     pickerColor = widget.card.activity.topColor;
     super.initState();
   }
+  //######################################################################
 
+  // Utility functions.
+  //######################################################################
+
+  // Update state when the user picked a color from the color picker.
+  //----------------------------------------------------------------------
   void onColorChanged(Color color) => setState(() => pickerColor = color);
 
+  // Dialog builder.
+  //----------------------------------------------------------------------
   Future<String?> _showDialog(
           {required BuildContext context,
           required Widget child,
@@ -42,7 +58,10 @@ class ScheduleDetailState extends State<ScheduleDetail> {
           ],
         ),
       );
+  //######################################################################
 
+  // Build UI.
+  //######################################################################
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -139,4 +158,7 @@ class ScheduleDetailState extends State<ScheduleDetail> {
           ],
         ),
       );
+  //######################################################################
 }
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

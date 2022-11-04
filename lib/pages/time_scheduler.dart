@@ -1,4 +1,4 @@
-import 'package:beyond_time/Database/db.dart';
+import 'package:beyond_time/database/db.dart';
 import 'package:beyond_time/models/schedule_activity.dart';
 import 'package:beyond_time/pages/menu.dart';
 import 'package:beyond_time/pages/schedule_detail.dart';
@@ -6,22 +6,29 @@ import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 
 
-//----------------------------------------------------------------------
-// Full day schedule. TODO: Specify day schedule.
+// Full day schedule. 
+// ignore: todo
+// TODO: Specify day schedule.
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class TimeScheduler extends StatefulWidget {
   const TimeScheduler({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => TimeSchedulerState();
 }
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+// Utility functions.
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class TimeSchedulerState extends State<TimeScheduler> {
   late List<ScheduleActivity> scheduledActivities;
 
+  // Run at widget build.
+  //######################################################################
   @override
   void initState() {
     //DB.deleteDatabase("schedules_activities.db");
-    DB.insertActivity(ScheduleActivity(
+    /*DB.insertActivity(ScheduleActivity(
         topTitle: "Lectura",
         mainTitle: "El Principito",
         topColor: Colors.purple,
@@ -38,19 +45,25 @@ class TimeSchedulerState extends State<TimeScheduler> {
         useGradient: true,
         useFoil: false,
         begin: DateTime(2017, 9, 7, 17, 30),
-        end: DateTime(2018, 9, 7, 17, 30)));
+        end: DateTime(2018, 9, 7, 17, 30)));*/
     scheduledActivities = List.empty();
     loadSchedule();
     super.initState();
   }
+  //######################################################################
 
+  // Utility functions.
+  //######################################################################
+
+  // Query all schedule activities from the current day.
+  //----------------------------------------------------------------------
   loadSchedule() async {
     List<ScheduleActivity> schedule = await DB.getSchedule();
     setState(() => scheduledActivities = schedule);
   }
 
+  // Navigate to the full view of the selected card.
   //----------------------------------------------------------------------
-// Utility functions.
   void pushRoute(BuildContext context, ActivityCard card) {
     Navigator.push(
         context,
@@ -58,7 +71,10 @@ class TimeSchedulerState extends State<TimeScheduler> {
           builder: (context) => ScheduleDetail(key: card.key, card: card),
         )).then((_) => loadSchedule());
   }
+  //######################################################################
 
+  // Build UI.
+  //######################################################################
   @override
   Widget build(BuildContext context) => Scaffold(
         drawer: const Drawer(child: Menu()),
@@ -79,4 +95,7 @@ class TimeSchedulerState extends State<TimeScheduler> {
                   .toList()),
         ),
       );
+  //######################################################################
 }
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -2,8 +2,13 @@ import 'package:beyond_time/router/routes.dart';
 import 'package:beyond_time/themes/theme.dart';
 import 'package:flutter/material.dart';
 
+// Layout for menu drawer.
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class Menu extends StatelessWidget {
   const Menu({super.key});
+
+  // Build UI.
+  //######################################################################
   @override
   Widget build(BuildContext context) => ListView(
         padding: EdgeInsets.zero,
@@ -17,4 +22,6 @@ class Menu extends StatelessWidget {
                     ))
                 .toList(),
       );
+  //######################################################################
 }
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

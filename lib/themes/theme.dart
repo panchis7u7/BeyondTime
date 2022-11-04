@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+// Application theme.
+//######################################################################
 class BeyondTheme {
   static const Color primary = Colors.red;
   static const Color secondary = Colors.indigo;
   static const Color terciary = Colors.deepPurpleAccent;
 
-  // Light theme mode.
+  // Theme modes.
   //###################################################################
+
+  // Light theme.
+  //----------------------------------------------------------------------
   static final ThemeData lightTheme = ThemeData.light().copyWith(
       primaryColor: primary,
       scaffoldBackgroundColor: Colors.white,
@@ -25,8 +30,8 @@ class BeyondTheme {
               shape: const StadiumBorder(),
               elevation: 0)));
 
-  // Dark theme mode.
-  //###################################################################
+  // Dark theme.
+  //----------------------------------------------------------------------
   static final ThemeData darkTheme = ThemeData.light().copyWith(
       primaryColor: primary,
       scaffoldBackgroundColor: Colors.black,
@@ -44,4 +49,7 @@ class BeyondTheme {
               backgroundColor: primary,
               shape: const StadiumBorder(),
               elevation: 20)));
+
+  //###################################################################
 }
+//######################################################################
