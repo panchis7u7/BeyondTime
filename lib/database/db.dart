@@ -56,5 +56,5 @@ class DB {
   }
 
   static Future<void> updateSchedule(ScheduleActivity activity) async =>
-      (await _openDB()).update("Activities", activity.toMap());
+      (await _openDB()).update("Activities", activity.toMap(), where: "id = ?", whereArgs: [activity.id]);
 }

@@ -94,7 +94,7 @@ class ScheduleDetailState extends State<ScheduleDetail> {
                 children: <Widget>[
                   const SizedBox(height: 30),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -105,14 +105,13 @@ class ScheduleDetailState extends State<ScheduleDetail> {
                             onSave: () {
                               setState(() =>
                                   widget.card.activity.topColor = pickerColor);
-                              //DB.updateSchedule(widget.card.activity);
+                              DB.updateSchedule(widget.card.activity);
                             },
                             child: ColorPicker(
                                 pickerColor: pickerColor,
                                 onColorChanged: onColorChanged)),
                         child: const Text("Top Color"),
                       ),
-                      const SizedBox(width: 40),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: widget.card.activity.bottomColor,
@@ -124,11 +123,11 @@ class ScheduleDetailState extends State<ScheduleDetail> {
                                 onSave: () {
                                   setState(() => widget
                                       .card.activity.bottomColor = pickerColor);
-                                  //DB.updateSchedule(widget.card.activity);
+                                  DB.updateSchedule(widget.card.activity);
                                 },
                                 child: ColorPicker(
                                   pickerColor: pickerColor,
-                                  onColorChanged: onColorChanged,
+                                  onColorChanged: onColorChanged
                                 )),
                         child: const Text("Bottom Color"),
                       )

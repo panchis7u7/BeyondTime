@@ -5,16 +5,6 @@ import 'package:beyond_time/pages/schedule_detail.dart';
 import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 
-//----------------------------------------------------------------------
-// Utility functions.
-void pushRoute(BuildContext context, ActivityCard card) {
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ScheduleDetail(key: card.key, card: card),
-      ));
-}
-//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 // Full day schedule. TODO: Specify day schedule.
@@ -57,6 +47,16 @@ class TimeSchedulerState extends State<TimeScheduler> {
   loadSchedule() async {
     List<ScheduleActivity> schedule = await DB.getSchedule();
     setState(() => scheduledActivities = schedule);
+  }
+
+  //----------------------------------------------------------------------
+// Utility functions.
+  void pushRoute(BuildContext context, ActivityCard card) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScheduleDetail(key: card.key, card: card),
+        )).then((_) => loadSchedule());
   }
 
   @override

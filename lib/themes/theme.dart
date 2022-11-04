@@ -29,8 +29,8 @@ class BeyondTheme {
   //###################################################################
   static final ThemeData darkTheme = ThemeData.light().copyWith(
       primaryColor: primary,
-      scaffoldBackgroundColor: Colors.black12,
-      appBarTheme: const AppBarTheme(color: primary, elevation: 0),
+      scaffoldBackgroundColor: Colors.black,
+      appBarTheme: const AppBarTheme(color: Colors.black, elevation: 0),
       iconTheme: const IconThemeData(color: Colors.white),
       buttonTheme: const ButtonThemeData(buttonColor: Colors.white),
       shadowColor: Colors.black,
