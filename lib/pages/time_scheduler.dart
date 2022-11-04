@@ -2,8 +2,6 @@ import 'package:beyond_time/Database/db.dart';
 import 'package:beyond_time/models/schedule_activity.dart';
 import 'package:beyond_time/pages/menu.dart';
 import 'package:beyond_time/pages/schedule_detail.dart';
-import 'package:beyond_time/router/routes.dart';
-import 'package:beyond_time/themes/theme.dart';
 import 'package:beyond_time/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 
@@ -57,10 +55,8 @@ class TimeSchedulerState extends State<TimeScheduler> {
   }
 
   loadSchedule() async {
-    List<ScheduleActivity> _scheduledActivities = await DB.getSchedule();
-    setState(() {
-      scheduledActivities = _scheduledActivities;
-    });
+    List<ScheduleActivity> schedule = await DB.getSchedule();
+    setState(() => scheduledActivities = schedule);
   }
 
   @override

@@ -19,7 +19,7 @@ class DB {
           useFoil BOOLEAN NOT NULL CHECK (useFoil IN (0, 1)),
           begin TEXT NOT NULL,
           end TEXT NOT NULL
-          );
+        );
         """),
         version: 1);
   }
@@ -36,21 +36,25 @@ class DB {
         await db.query("Activities");
 
     return List.generate(
-        activitiesMap.length, (i) => ScheduleActivity(
+        activitiesMap.length,
+        (i) => ScheduleActivity(
             id: activitiesMap[i]['id'],
             topTitle: activitiesMap[i]['topTitle'],
             mainTitle: activitiesMap[i]['mainTitle'],
             topColor: Color(int.parse(
-              activitiesMap[i]['topColor'].split('(0x')[1].split(')')[0], 
-              radix: 16)
-            ),
+                activitiesMap[i]['topColor'].split('(0x')[1].split(')')[0],
+                radix: 16)),
             bottomColor: Color(int.parse(
-              activitiesMap[i]['bottomColor'].split('(0x')[1].split(')')[0],
-              radix: 16)
-            ),
+                activitiesMap[i]['bottomColor'].split('(0x')[1].split(')')[0],
+                radix: 16)),
             useGradient: activitiesMap[i]['useGradient'] == 1 ? true : false,
             useFoil: activitiesMap[i]['useFoil'] == 1 ? true : false,
-            begin: DateFormat('dd-MM-yyyy HH:mm').parse(activitiesMap[i]['begin']),
-            end: DateFormat('dd-MM-yyyy HH:mm').parse(activitiesMap[i]['end'])));
+            begin:
+                DateFormat('dd-MM-yyyy HH:mm').parse(activitiesMap[i]['begin']),
+            end:
+                DateFormat('dd-MM-yyyy HH:mm').parse(activitiesMap[i]['end'])));
   }
+
+  static Future<void> updateSchedule(ScheduleActivity activity) async =>
+      (await _openDB()).update("Activities", activity.toMap());
 }

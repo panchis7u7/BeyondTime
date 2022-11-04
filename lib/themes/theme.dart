@@ -29,19 +29,19 @@ class BeyondTheme {
   //###################################################################
   static final ThemeData darkTheme = ThemeData.light().copyWith(
       primaryColor: primary,
-      scaffoldBackgroundColor: Colors.black,
+      scaffoldBackgroundColor: Colors.black12,
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       iconTheme: const IconThemeData(color: Colors.white),
       buttonTheme: const ButtonThemeData(buttonColor: Colors.white),
       shadowColor: Colors.black,
       cardTheme: const CardTheme(shadowColor: Colors.black),
       textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(foregroundColor: primary)),
+          style: TextButton.styleFrom(foregroundColor: Colors.black, backgroundColor: Colors.white)),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: primary, elevation: 5),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: primary,
               shape: const StadiumBorder(),
-              elevation: 0)));
+              elevation: 20)));
 }
