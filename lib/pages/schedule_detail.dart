@@ -7,7 +7,6 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 class ScheduleDetail extends StatefulWidget {
   const ScheduleDetail({super.key, required this.card});
-
   final ActivityCard card;
 
   @override
@@ -25,6 +24,8 @@ class ScheduleDetailState extends State<ScheduleDetail> {
   //######################################################################
   @override
   void initState() {
+    //Uri endpoint = Uri.https("webexapis.com", "/v1/authorize");
+    //await http.get(endpoint);
     pickerColor = widget.card.activity.topColor;
     super.initState();
   }
@@ -66,6 +67,7 @@ class ScheduleDetailState extends State<ScheduleDetail> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(widget.card.activity.mainTitle),
+          backgroundColor: widget.card.activity.topColor,
           elevation: 0,
         ),
         body: Column(
@@ -145,9 +147,8 @@ class ScheduleDetailState extends State<ScheduleDetail> {
                                   DB.updateSchedule(widget.card.activity);
                                 },
                                 child: ColorPicker(
-                                  pickerColor: pickerColor,
-                                  onColorChanged: onColorChanged
-                                )),
+                                    pickerColor: pickerColor,
+                                    onColorChanged: onColorChanged)),
                         child: const Text("Bottom Color"),
                       )
                     ],

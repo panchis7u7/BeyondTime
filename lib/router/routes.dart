@@ -1,6 +1,7 @@
 import 'package:beyond_time/Pages/Time_Scheduler.dart';
 import 'package:beyond_time/models/menu_option.dart';
 import 'package:beyond_time/pages/about.dart';
+import 'package:beyond_time/pages/balance.dart';
 import 'package:beyond_time/pages/settings.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,11 @@ class Routes {
         icon: Icons.home,
         name: "Home",
         screen: const TimeScheduler()),
+    MenuOption(
+      route: "Balance", 
+      icon: Icons.balance, 
+      name: "Balance", 
+      screen: const BalancePage()),
     MenuOption(
         route: "Settings",
         icon: Icons.settings,
@@ -44,7 +50,6 @@ class Routes {
   static Map<String, Widget Function(BuildContext)> getAppRoutes() =>
       Map.fromEntries(menuOptions.map((option) =>
           MapEntry(option.route, (BuildContext ctx) => option.screen)));
-          
   //######################################################################
 }
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
