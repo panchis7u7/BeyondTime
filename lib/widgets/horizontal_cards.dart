@@ -35,6 +35,7 @@ class Card3DWidget extends StatefulWidget {
   final Card3D card;
   final Function() onTap;
   final int index;
+  
 
   @override
   State<StatefulWidget> createState() => Card3DWidgetState();

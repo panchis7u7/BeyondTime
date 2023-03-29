@@ -1,7 +1,7 @@
 import 'package:beyond_time/Pages/Time_Scheduler.dart';
 import 'package:beyond_time/models/menu_option.dart';
 import 'package:beyond_time/pages/about.dart';
-import 'package:beyond_time/pages/balance.dart';
+import 'package:beyond_time/pages/finance.dart';
 import 'package:beyond_time/pages/settings.dart';
 import 'package:flutter/material.dart';
 

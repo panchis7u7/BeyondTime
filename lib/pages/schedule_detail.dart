@@ -88,10 +88,7 @@ class ScheduleDetailState extends State<ScheduleDetail> {
                         ? LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            stops: const [
-                                0,
-                                6
-                              ],
+                            stops: const [0,6],
                             colors: [
                                 widget.card.activity.topColor,
                                 widget.card.activity.bottomColor!
