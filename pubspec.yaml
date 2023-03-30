@@ -45,6 +45,7 @@ dependencies:
   flutter_web_auth: ^0.5.0
   nonce: ^1.2.0
   tuple: ^2.0.1
+  responsive_grid: ^2.2.0
   # sensors_plus: ^2.0.1
   # shimmer: ^2.0.0
 

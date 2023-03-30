@@ -1,4 +1,5 @@
-import 'package:beyond_time/Pages/Time_Scheduler.dart';
+
+import 'package:beyond_time/pages/time_scheduler.dart';
 import 'package:beyond_time/providers/meetings_provider.dart';
 import 'package:beyond_time/router/routes.dart';
 import 'package:beyond_time/themes/theme.dart';
@@ -28,6 +29,7 @@ class BeyondTime extends StatelessWidget {
         initialRoute: "Home",
         routes: Routes.getAppRoutes(),
         theme: BeyondTheme.lightTheme,
+        restorationScopeId: 'app',
         onGenerateRoute: (settings) =>
             Routes.onGenerateRoute(settings, const TimeScheduler()),
       );

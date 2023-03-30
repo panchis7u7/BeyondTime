@@ -1,8 +1,9 @@
-import 'package:beyond_time/Pages/Time_Scheduler.dart';
+
 import 'package:beyond_time/models/menu_option.dart';
 import 'package:beyond_time/pages/about.dart';
 import 'package:beyond_time/pages/finance.dart';
 import 'package:beyond_time/pages/settings.dart';
+import 'package:beyond_time/pages/time_scheduler.dart';
 import 'package:flutter/material.dart';
 
 // Application routes.
@@ -22,7 +23,7 @@ class Routes {
       route: "Balance", 
       icon: Icons.balance, 
       name: "Balance", 
-      screen: const BalancePage()),
+      screen: const BalancePage(restorationId: 'balance',)),
     MenuOption(
         route: "Settings",
         icon: Icons.settings,
